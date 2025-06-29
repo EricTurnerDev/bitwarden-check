@@ -45,7 +45,8 @@ folder_map = {f['id']: f['name'] for f in data['folders']}
 output = {
     'Top Secret': [],
     'Secret': [],
-    'No Folder': []
+    'Confidential': [],
+    'Unclassified': []
 }
 
 # ======================
@@ -66,7 +67,7 @@ for item in data['items']:
         continue
 
     folder_id = item.get('folderId')
-    folder_name = folder_map.get(folder_id, 'No Folder')
+    folder_name = folder_map.get(folder_id, 'Unclassified')
 
     if folder_name == 'Archived':
         continue
@@ -88,7 +89,7 @@ for item in data['items']:
 # ✅ PRINT RESULTS
 # ======================
 
-folder_order = ['Top Secret', 'Secret', 'No Folder']
+folder_order = ['Top Secret', 'Secret', 'Confidential', 'Unclassified']
 
 for folder in folder_order:
     items = output.get(folder, [])
